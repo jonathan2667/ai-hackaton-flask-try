@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  --header-height: 3rem;
+  --title-color: #333;
+  --text-color: #666;
+  --body-color: #f8f9fa;
+  --container-color: #fff;
+  --accent-color: #007bff;
+  --font-family: 'Poppins', sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 16px;
+  background-color: var(--body-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: auto;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+header .logo {
+  width: 50px;
+}
+
+header .icon {
+  width: 25px;
+}
+
+header .profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.section__title {
+  font-size: 1.75rem;
+  color: var(--title-color);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: var(--container-color);
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.card .card-body {
+  padding: 20px;
+}
+
+.card .card-title {
+  font-size: 1.25rem;
+  color: var(--accent-color);
+  margin-bottom: 10px;
+}
+
+.score-display {
+  font-size: 2.5rem;
+  color: #28a745;
+}
+
+.button {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: var(--container-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: darken(var(--accent-color), 10%);
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+.tip-of-the-day {
+  font-style: italic;
+  margin-bottom: 10px;
+}

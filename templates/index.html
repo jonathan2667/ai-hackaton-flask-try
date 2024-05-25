@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Wellness App 1</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="d-flex justify-content-between align-items-center my-4">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="App Logo" class="logo">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-link p-0 mx-2"><img src="{{ url_for('static', filename='notifications.png') }}" alt="Notifications" class="icon"></button>
+                <img src="{{ url_for('static', filename='profile.jpg') }}" alt="Profile Picture" class="profile-pic">
+                <span class="ml-2">John Doe</span>
+            </div>
+        </header>
+        
+        <!-- Financial Overview -->
+        <section class="financial-overview section">
+            <h2 class="section__title">Financial Overview</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Current Balance</h5>
+                            <p class="card-text">${{ user_profile['account']['balance'] }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Monthly Income vs. Expenses</h5>
+                            <canvas id="incomeExpenseChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Financial Wellness Score -->
+        <section class="financial-score section">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Financial Wellness Score</h5>
+                    <h2 class="score-display">85/100</h2>
+                    <p>Your financial health is in good shape!</p>
+                    <a href="#" class="btn button">View Detailed Report</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- User Profile -->
+        <section class="user-profile section">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">User Profile</h5>
+                    <p>Recent Transactions:</p>
+                    <ul>
+                        {% for transaction in user_profile['transactions'] %}
+                        <li>{{ transaction['description'] }} - ${{ transaction['amount'] }} ({{ transaction['category'] }})</li>
+                        {% endfor %}
+                    </ul>
+                    <p>Upcoming Bills:</p>
+                    <ul>
+                        <!-- Add logic for upcoming bills if available -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Virtual Financial Coach -->
+        <section class="financial-coach section">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Virtual Financial Coach</h5>
+                    <p class="tip-of-the-day">Tip of the Day: Save 10% of your income!</p>
+                    <button class="btn button">Ask a Question</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var ctx = document.getElementById('incomeExpenseChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Income', 'Expenses'],
+                datasets: [{
+                    label: 'Amount',
+                    data: [5000, 3500],
+                    backgroundColor: ['#4caf50', '#f44336']
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
